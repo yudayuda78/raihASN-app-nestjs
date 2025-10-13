@@ -1,0 +1,8 @@
+{
+  "name": "raihasn-app-nestjs",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ]
+}
