@@ -6,6 +6,7 @@ import { FaqContent } from "../composite/FaqContent";
 import { StrengthContent } from "../composite/StrengthContent";
 import { AboutHomeContent } from "../composite/AboutHomeContent";
 import { ProductContent } from "../composite/ProductContent";
+import { ApplyContent } from "../composite/ApplyContent";
 
 
 export function HomeContent() {
@@ -19,6 +20,7 @@ export function HomeContent() {
       <BannerSell />
       <PriceList />
       <FaqContent />
+      <ApplyContent /> 
       
     </div>
   );
