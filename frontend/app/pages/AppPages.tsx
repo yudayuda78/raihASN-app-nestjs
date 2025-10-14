@@ -1,5 +1,7 @@
-export function App(){
+import { NavbarApp } from "~/components/layout/NavbarApp"
+
+export function AppPages(){
     return (
-        <h1>App Pages</h1>
+        <NavbarApp/>
     )
 }
