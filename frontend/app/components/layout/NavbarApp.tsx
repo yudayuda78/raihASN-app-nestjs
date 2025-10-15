@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Bell, User, LogOut, Settings } from "lucide-react";
+import { Link } from "react-router";
 
 export function NavbarApp() {
   const [showNotif, setShowNotif] = useState(false);
@@ -26,16 +27,18 @@ export function NavbarApp() {
   }, []);
 
   return (
-    <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+    <nav className="bg-white shadow-md top-0 left-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-1.5 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center space-x-2">
+          <Link to="/app">
           <img
             src="/raihlogo.png"
             alt="Raihasn Logo"
             className="w-8 h-8 object-contain"
           />
-          <span className="font-semibold text-gray-700">RaihASN</span>
+          </Link>
+      
         </div>
 
         {/* Icons */}
