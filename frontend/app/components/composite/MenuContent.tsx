@@ -1,45 +1,31 @@
-import { Package, BookOpen, Target, Gift, GraduationCap, Star } from "lucide-react";
+import { Menu } from "../ui/Menu";
 
-export function MenuContent() {
-  const menus = [
-    { name: "Beli Paket", icon: <Package className="w-7 h-7" /> },
-    { name: "Materi", icon: <BookOpen className="w-7 h-7" /> },
-    { name: "Tryout", icon: <Target className="w-7 h-7" /> },
-    { name: "Tryout Gratis", icon: <Gift className="w-7 h-7" /> },
-    { name: "Bimbingan Belajar", icon: <GraduationCap className="w-7 h-7" /> },
-    { name: "Bonus", icon: <Star className="w-7 h-7" /> },
-  ];
+type MenuItem = {
+  name: string;
+  icon: React.ReactNode;
+  link: string;
+};
 
+type MenuContentProps = {
+  title: string;
+  items: MenuItem[];
+};
+
+export function MenuContent({ title, items }: MenuContentProps) {
   return (
-    <div className="bg-[#5c40c2]/10 py-8">
-      <nav className="max-w-6xl mx-auto flex flex-wrap justify-center gap-10 text-gray-800 font-semibold">
-        {menus.map((menu, index) => (
-          <button
-            key={index}
-            className="flex flex-col items-center justify-center gap-3 w-32 h-28 
-                       bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300
-                       hover:-translate-y-1 border border-transparent hover:border-[#8fde62]"
-          >
-            <div
-              className="p-3 rounded-xl"
-              style={{
-                backgroundColor: "#5c40c2",
-                color: "white",
-              }}
-            >
-              {menu.icon}
-            </div>
-            <span
-              className="text-base font-semibold"
-              style={{
-                color: "#5c40c2",
-              }}
-            >
-              {menu.name}
-            </span>
-          </button>
-        ))}
-      </nav>
+    <div className="bg-[#5c40c2]/10 py-10">
+      {/* Judul Section */}
+      <div className="max-w-6xl mx-auto text-center mb-8">
+        <h1 className="text-3xl font-extrabold text-[#5c40c2] tracking-wide">
+          {title}
+        </h1>
+        <div className="w-24 h-1 bg-[#8fde62] mx-auto mt-2 rounded-full"></div>
+      </div>
+
+      {/* Menu */}
+      <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-10 text-gray-800 font-semibold">
+        <Menu items={items} />
+      </div>
     </div>
   );
 }
