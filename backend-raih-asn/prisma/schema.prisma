@@ -21,3 +21,17 @@ model User {
   password  String
   createdAt DateTime @default(now())
 }
+
+model Tryout{
+  id      Int @id @default(autoincrement())
+  tryoutName String
+  slug        String @unique
+  soal Soal[]
+}
+
+model Soal{
+  id  Int @id @default(autoincrement())
+  soal String
+  tryoutId Int
+  tryout    Tryout   @relation(fields: [tryoutId], references: [id])
+}
