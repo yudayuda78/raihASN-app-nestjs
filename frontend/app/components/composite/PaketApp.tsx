@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { PriceCard } from "../ui/PriceCard";
 
 type PriceCardData = {
@@ -7,15 +6,9 @@ type PriceCardData = {
   features: string[];
 };
 
-type PriceListProps = {
-  bgColor?: string;
-};
-
 type PriceCategory = "tryout" | "cpns" | "pppk";
 
-export function PriceList({ bgColor = "bg-white" }: PriceListProps) {
-  const [activeTab, setActiveTab] = useState<PriceCategory>("tryout");
-
+export default function PaketApp() {
   const priceData: Record<PriceCategory, PriceCardData[]> = {
     tryout: [
       {
@@ -116,38 +109,13 @@ export function PriceList({ bgColor = "bg-white" }: PriceListProps) {
   };
 
   return (
-    <div className={`${bgColor} py-10`}>
-      <div className="max-w-7xl mx-auto px-6 text-center text-white">
-        <h2 className="text-3xl font-bold mb-8">Paket Belajar</h2>
-
-        {/* Tombol Tab */}
-        <div className="flex justify-center gap-4 mb-10">
-          {(["tryout", "cpns", "pppk"] as PriceCategory[]).map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-6 py-2 rounded-lg font-semibold capitalize transition ${
-                activeTab === tab
-                  ? "bg-[#8fde62] text-black"
-                  : "bg-white/20 hover:bg-white/30"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-
-        {/* Card Harga */}
-        <div className="flex flex-col md:flex-row justify-center items-center  gap-6">
-          {priceData[activeTab].map((card, index) => (
-            <PriceCard
-              key={index}
-              title={card.title}
-              price={card.price}
-              features={card.features}
-            />
-          ))}
-        </div>
+    <div className="bg-white top-0 left-0 w-full z-50 min-h-screen flex flex-col py-10">
+      <div className="max-w-7xl mx-auto px-6 flex-1">
+        <PriceCard
+          title={priceData.tryout[0].title}
+          price={priceData.tryout[0].price}
+          features={priceData.tryout[0].features}
+        />
       </div>
     </div>
   );
