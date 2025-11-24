@@ -1,5 +1,5 @@
 import type { Route } from "./+types/home";
-import { HomePages} from "my-react-router-app/app/pages/HomePages"
+import { HomePages } from "../pages/HomePages";
 
 export function meta({}: Route.MetaArgs) {
   return [

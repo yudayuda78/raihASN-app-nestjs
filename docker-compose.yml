@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin12qwaszx34erdfcv!
+      POSTGRES_DB: raihasn
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend-raih-asn
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgresql://admin:admin12qwaszx34erdfcv!@db:5432/raihasn
+      JWT_SECRET: Jackkahunalaguna78x!
+      BASE_URL: http://localhost:3000
+      NODE_ENV: development
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+volumes:
+  db-data:

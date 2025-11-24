@@ -1,5 +1,5 @@
 import type { Route } from "./+types/tryout";
-import { TryoutPages } from "my-react-router-app/app/pages/TryoutPages";
+import { TryoutPages } from "../pages/TryoutPages";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -8,7 +8,6 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Tryout(){
-    return <TryoutPages/>
-    
+export default function Tryout() {
+  return <TryoutPages />;
 }

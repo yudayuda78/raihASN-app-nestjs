@@ -32,13 +32,12 @@ export function NavbarApp() {
         {/* Logo */}
         <div className="flex items-center space-x-2">
           <Link to="/app">
-          <img
-            src="/raihlogo.png"
-            alt="Raihasn Logo"
-            className="w-8 h-8 object-contain"
-          />
+            <img
+              src="/raihlogo.png"
+              alt="Raihasn Logo"
+              className="w-8 h-8 object-contain"
+            />
           </Link>
-      
         </div>
 
         {/* Icons */}
@@ -58,7 +57,9 @@ export function NavbarApp() {
 
             {showNotif && (
               <div className="absolute right-0 mt-2 w-72 bg-white border border-gray-200 shadow-lg rounded-lg p-3 z-50">
-                <h3 className="text-sm font-semibold text-gray-700 mb-2">Notifikasi</h3>
+                <h3 className="text-sm font-semibold text-gray-700 mb-2">
+                  Notifikasi
+                </h3>
                 <ul className="space-y-2">
                   <li className="text-sm text-gray-600 hover:bg-gray-50 p-2 rounded">
                     📢 Pengumuman seleksi tahap 1 telah dibuka
