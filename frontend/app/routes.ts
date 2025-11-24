@@ -9,4 +9,5 @@ export default [
   route("tryout", "routes/tryout.tsx"),
   route("paket", "routes/paket.tsx"),
   route("dashboard", "routes/dashboard.tsx"),
+  route("materi", "pages/MateriPages.tsx"),
 ] satisfies RouteConfig;
