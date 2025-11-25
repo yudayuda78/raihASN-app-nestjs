@@ -35,3 +35,9 @@ model Soal{
   tryoutId Int
   tryout    Tryout   @relation(fields: [tryoutId], references: [id])
 }
+
+model Materi{
+  id     Int @id @default(autoincrement())
+  title   String
+  slug    String @unique
+}
