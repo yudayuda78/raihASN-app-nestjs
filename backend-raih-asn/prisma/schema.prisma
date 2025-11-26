@@ -40,4 +40,15 @@ model Materi{
   id     Int @id @default(autoincrement())
   title   String
   slug    String @unique
+  topikMaterial TopikMateri[]
 }
+
+model TopikMateri{
+  id     Int @id @default(autoincrement())
+  title   String
+  slug    String @unique
+  materiId Int
+  materi    Materi   @relation(fields: [materiId], references: [id])
+}
+
+

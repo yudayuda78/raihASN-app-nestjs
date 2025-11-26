@@ -10,6 +10,7 @@ import {
 import { MateriService } from './materi.service';
 import { CreateMateriDto } from './dto/create-materi.dto';
 import { UpdateMateriDto } from './dto/update-materi.dto';
+import { NotFoundException } from '@nestjs/common';
 
 @Controller('materi')
 export class MateriController {
@@ -31,18 +32,31 @@ export class MateriController {
     };
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.materiService.findOne(+id);
+  @Get(':slug')
+  async findOne(@Param('slug') slug: string) {
+    const data = await this.materiService.findOne(slug);
+
+    if (!data) {
+      throw new NotFoundException(`Materi with slug ${slug} not found`);
+    }
+
+    return {
+      status: 'success',
+      message: `Materi with slug ${slug} retrieved successfully`,
+      data,
+    };
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateMateriDto: UpdateMateriDto) {
-    return this.materiService.update(+id, updateMateriDto);
+  @Patch(':slug')
+  update(
+    @Param('slug') slug: string,
+    @Body() updateMateriDto: UpdateMateriDto,
+  ) {
+    return this.materiService.update(slug, updateMateriDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.materiService.remove(+id);
+  @Delete(':slug')
+  remove(@Param('slug') slug: string) {
+    return this.materiService.remove(slug);
   }
 }

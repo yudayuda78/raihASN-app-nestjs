@@ -8,23 +8,35 @@ import { json } from 'stream/consumers';
 export class MateriService {
   constructor(private prisma: PrismaService) {}
 
-  create(createMateriDto: CreateMateriDto) {
-    return 'This action adds a new materi';
+  async create({ title, slug }: CreateMateriDto) {
+    return this.prisma.materi.create({
+      data: { title, slug },
+    });
   }
 
   findAll() {
     return this.prisma.materi.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} materi`;
+  findOne(slug: string) {
+    return this.prisma.materi.findUnique({
+      where: { slug },
+      include: {
+        topikMaterial: true,
+      },
+    });
   }
 
-  update(id: number, updateMateriDto: UpdateMateriDto) {
-    return `This action updates a #${id} materi`;
+  update(slug: string, { title, slug: newSlug }: UpdateMateriDto) {
+    return this.prisma.materi.update({
+      where: { slug },
+      data: { title, slug: newSlug },
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} materi`;
+  remove(slug: string) {
+    return this.prisma.materi.delete({
+      where: { slug },
+    });
   }
 }

@@ -1,1 +1,5 @@
-export class CreateMateriDto {}
+export class CreateMateriDto {
+  title: string;
+
+  slug: string;
+}
