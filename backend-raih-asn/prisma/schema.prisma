@@ -22,18 +22,62 @@ model User {
   createdAt DateTime @default(now())
 }
 
-model Tryout{
+model TryoutCpns{
   id      Int @id @default(autoincrement())
   tryoutName String
   slug        String @unique
-  soal Soal[]
+  soal SoalCpns[]
 }
 
-model Soal{
+enum KategoriMateri{
+  tiu 
+  twk
+  tkp
+}
+
+model SoalCpns{
   id  Int @id @default(autoincrement())
   soal String
-  tryoutId Int
-  tryout    Tryout   @relation(fields: [tryoutId], references: [id])
+  tryoutCpnsId Int
+  tryout    TryoutCpns   @relation(fields: [tryoutCpnsId], references: [id])
+  jenisMateri KategoriMateri
+  optionA String?
+  optionB String?
+  optionC String?
+  optionD String?
+  optionE String?
+  correctOption String?
+  optionAImage String?
+  optionBImage String?
+  optionCImage String?
+  optionDImage String?
+  optionEImage String?
+}
+
+model TryoutPppk{
+  id      Int @id @default(autoincrement())
+  tryoutName String
+  slug        String @unique
+  soal SoalPppk[]
+}
+
+model SoalPppk{
+  id  Int @id @default(autoincrement())
+  soal String
+  tryoutPppkId Int
+  tryout    TryoutPppk   @relation(fields: [tryoutPppkId], references: [id])
+  jenisMateri KategoriMateri
+  optionA String?
+  optionB String?
+  optionC String?
+  optionD String?
+  optionE String?
+  correctOption String?
+  optionAImage String?
+  optionBImage String?
+  optionCImage String?
+  optionDImage String?
+  optionEImage String?
 }
 
 model Materi{
