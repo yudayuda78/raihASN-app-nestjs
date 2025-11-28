@@ -48,15 +48,39 @@ export class MateriController {
   }
 
   @Patch(':slug')
-  update(
+  async update(
     @Param('slug') slug: string,
     @Body() updateMateriDto: UpdateMateriDto,
   ) {
-    return this.materiService.update(slug, updateMateriDto);
+    try {
+      const data = await this.materiService.update(slug, updateMateriDto);
+      if (!data) {
+        throw new NotFoundException(`Materi with slug ${slug} not found`);
+      }
+      return {
+        status: 'success',
+        message: `Materi with slug ${slug} updated successfully`,
+        data,
+      };
+    } catch (error) {
+      throw new NotFoundException(`Materi with slug ${slug} not found`);
+    }
   }
 
   @Delete(':slug')
-  remove(@Param('slug') slug: string) {
-    return this.materiService.remove(slug);
+  async remove(@Param('slug') slug: string) {
+    try {
+      const data = await this.materiService.remove(slug);
+      if (!data) {
+        throw new NotFoundException(`Materi with slug ${slug} not found`);
+      }
+      return {
+        status: 'success',
+        message: `Materi with slug ${slug} deleted successfully`,
+        data,
+      };
+    } catch (error) {
+      throw new NotFoundException(`Materi with slug ${slug} not found`);
+    }
   }
 }

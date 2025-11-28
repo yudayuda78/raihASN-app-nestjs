@@ -6,9 +6,11 @@ import { PrismaService } from './prisma.service';
 import { MateriModule } from './materi/materi.module';
 import { UsersModule } from './users/users.module';
 import { TryoutModule } from './tryout/tryout.module';
+import { PaymentModule } from './payment/payment.module';
+import { SoalModule } from './soal/soal.module';
 
 @Module({
-  imports: [AuthModule, MateriModule, UsersModule, TryoutModule],
+  imports: [AuthModule, MateriModule, UsersModule, TryoutModule, PaymentModule, SoalModule],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })

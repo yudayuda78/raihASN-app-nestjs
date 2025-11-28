@@ -1,5 +1,8 @@
-export class UpdateTryoutDto {
-  tryoutName?: string;
+import { PartialType } from '@nestjs/mapped-types';
+import { CreateTryoutDto } from './create-tryout.dto';
 
-  slug?: string;
+export class UpdateTryoutDto extends PartialType(CreateTryoutDto) {
+  tryoutName: string;
+
+  slug: string;
 }

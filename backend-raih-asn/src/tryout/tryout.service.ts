@@ -65,6 +65,16 @@ export class TryoutService {
     return tryoutPppk;
   }
 
+  async createTryoutPppk({ tryoutName, slug }: CreateTryoutDto) {
+    try {
+      return this.prisma.tryoutPppk.create({
+        data: { tryoutName, slug },
+      });
+    } catch (err) {
+      throw err;
+    }
+  }
+
   async getTryoutPppkBySlug(slug: string) {
     return this.prisma.tryoutPppk.findUnique({
       where: {
@@ -73,6 +83,28 @@ export class TryoutService {
       include: {
         soal: true,
       },
+    });
+  }
+
+  async updateTryoutPppk(slug: string, dto: UpdateTryoutDto) {
+    try {
+      return this.prisma.tryoutPppk.update({
+        where: {
+          slug: slug,
+        },
+        data: {
+          tryoutName: dto.tryoutName,
+          slug: dto.slug,
+        },
+      });
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async deleteTryoutPppk(slug: string) {
+    return this.prisma.tryoutPppk.delete({
+      where: { slug },
     });
   }
 }
