@@ -1,5 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { TryoutService } from '../tryout.service';
+import { CreateTryoutDto } from '../dto/create-tryout.dto';
 
 @Controller('tryout/cpns')
 export class CpnsController {
@@ -10,6 +11,25 @@ export class CpnsController {
     const tryoutCpns = await this.tryoutService.getAllTryoutCpns();
     return {
       message: 'Success fetch all tryout cpns',
+      data: tryoutCpns,
+    };
+  }
+
+  @Post()
+  async createCpns(@Body() createTryoutDto: CreateTryoutDto) {
+    const tryoutCpns =
+      await this.tryoutService.createTryooutCpns(createTryoutDto);
+    return {
+      message: 'Success create tryout cpns',
+      data: tryoutCpns,
+    };
+  }
+
+  @Get(':slug')
+  async getCpnsBySlug() {
+    const tryoutCpns = await this.tryoutService.getTryoutCpnsBySlug;
+    return {
+      message: 'Success fetch tryout cpns by slug',
       data: tryoutCpns,
     };
   }
