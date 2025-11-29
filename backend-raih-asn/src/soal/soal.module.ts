@@ -5,7 +5,7 @@ import { CpnsController } from './controller/cpns.controller';
 import { PppkController } from './controller/pppk.controller';
 
 @Module({
-  controllers: [SoalController, CpnsController, PppkController],
+  controllers: [CpnsController, PppkController],
   providers: [SoalService, PrismaService],
 })
 export class SoalModule {}

@@ -1,5 +1,10 @@
 import { DashboardPages } from "~/pages/DashboardPages";
+import { ChakraProvider } from "@chakra-ui/react";
 
 export default function Dashboard() {
-  return <DashboardPages />;
+  return (
+    <ChakraProvider>
+      <DashboardPages />
+    </ChakraProvider>
+  );
 }
