@@ -10,6 +10,7 @@ export default [
   route("paket", "routes/paket.tsx"),
   route("", "routes/_dashboard.tsx", [
     route("dashboard", "routes/dashboard.tsx"),
+    route("dashboard/materi", "routes/dashboard/materi.tsx"),
   ]),
 
   route("materi", "pages/MateriPages.tsx"),

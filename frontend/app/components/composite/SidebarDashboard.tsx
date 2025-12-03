@@ -16,6 +16,7 @@ import {
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { FiHome, FiBook, FiUser, FiBookOpen, FiLogOut } from "react-icons/fi";
 import { useBreakpointValue } from "@chakra-ui/react";
+import { Link } from "react-router";
 
 import React from "react";
 
@@ -35,8 +36,12 @@ export function SidebarDashboard() {
             <Box className="flex flex-col items-center h-full py-4">
               {/* Menu Icons */}
               <div className="flex flex-col items-center gap-8 text-2xl mt-6 text-white">
-                <FiHome />
-                <FiBook />
+                <Link to="dashboard">
+                  <FiHome />
+                </Link>
+                <Link to="dashboard/materi">
+                  <FiBook />
+                </Link>
                 <FiBookOpen />
                 <FiUser />
               </div>
@@ -71,8 +76,12 @@ export function SidebarDashboard() {
                 <DrawerBody className="flex flex-col items-center h-full py-4">
                   {/* Menu Icons */}
                   <div className="flex flex-col items-center gap-8 text-2xl mt-6 text-white">
-                    <FiHome />
-                    <FiBook />
+                    <Link to="dashboard">
+                      <FiHome />
+                    </Link>
+                    <Link to="dashboard/materi">
+                      <FiBook />
+                    </Link>
                     <FiBookOpen />
                     <FiUser />
                   </div>
