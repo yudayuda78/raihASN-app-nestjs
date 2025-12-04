@@ -11,6 +11,7 @@ export default [
   route("", "routes/_dashboard.tsx", [
     route("dashboard", "routes/dashboard.tsx"),
     route("dashboard/materi", "routes/dashboard/materi.tsx"),
+    route("dashboard/materi/addmateri", "routes/dashboard/addmateri.tsx"),
   ]),
 
   route("materi", "pages/MateriPages.tsx"),

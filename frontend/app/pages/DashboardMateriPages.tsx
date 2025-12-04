@@ -12,6 +12,7 @@ import {
   Box,
   Button,
 } from "@chakra-ui/react";
+import { Link } from "react-router";
 
 export function DashboardMateriPages() {
   return (
@@ -33,18 +34,20 @@ export function DashboardMateriPages() {
           </Button>
         </Box>
         <Box>
-          <Button
-            bg="#5c40c2"
-            color="white"
-            _hover={{
-              bg: "#4a32a0",
-              transform: "scale(1.05)",
-              boxShadow: "lg",
-            }}
-            transition="all 0.2s"
-          >
-            Add Materi
-          </Button>
+          <Link to="dashboard/materi/addmateri">
+            <Button
+              bg="#5c40c2"
+              color="white"
+              _hover={{
+                bg: "#4a32a0",
+                transform: "scale(1.05)",
+                boxShadow: "lg",
+              }}
+              transition="all 0.2s"
+            >
+              Add Materi
+            </Button>
+          </Link>
         </Box>
       </Box>
       <TableContainer>
