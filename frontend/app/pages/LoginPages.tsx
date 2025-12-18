@@ -1,4 +1,12 @@
+import { useAuthStore } from "~/store/useAuthStore";
+import { useState } from "react";
+import { useNavigate } from "react-router";
+
 export function LoginPages() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <section className="min-h-screen flex items-center justify-center bg-gray-50 px-6">
       <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8 space-y-6">
@@ -22,6 +30,7 @@ export function LoginPages() {
             <input
               type="email"
               id="email"
+              value={email}
               placeholder="contoh@email.com"
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-[#5c40c2] focus:outline-none"
             />

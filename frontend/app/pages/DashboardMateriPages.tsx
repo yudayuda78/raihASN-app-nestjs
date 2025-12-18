@@ -34,7 +34,7 @@ export function DashboardMateriPages() {
           </Button>
         </Box>
         <Box>
-          <Link to="dashboard/materi/addmateri">
+          <Link to="addmateri">
             <Button
               bg="#5c40c2"
               color="white"

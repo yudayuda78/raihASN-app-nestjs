@@ -1,57 +1,39 @@
-import { useState } from "react"
-
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { useAuthStore } from "../store/useAuthStore";
 
 export function RegisterPages() {
+  const navigate = useNavigate();
+
+  const { register, loading, message, isSuccess } = useAuthStore();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
-  const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
-  
-  
+
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
-      setMessage("Kata sandi tidak cocok");
-      return;
+    const success = await register({
+      name,
+      email,
+      password,
+      confirmPassword,
+    });
+
+    if (success) {
+      setName("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 1000);
     }
+  };
 
-    setLoading(true);
-    setMessage("");
-
-    try {
-      const response = await fetch("http://localhost:3000/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, email, password }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setMessage("Registrasi berhasil! Silakan login.");
-        setName("");
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
-        setIsSuccess(true);
-      } else {
-        setMessage(data.message || "Gagal mendaftar");
-        setIsSuccess(false);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      setMessage("Terjadi kesalahan server");
-      setIsSuccess(false);
-    } finally {
-      setLoading(false);
-    }
-  }
   return (
     <section className="min-h-screen flex items-center justify-center bg-gray-50 px-6">
       <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8 space-y-6">
@@ -133,7 +115,7 @@ export function RegisterPages() {
             />
           </div>
 
-         <button
+          <button
             type="submit"
             disabled={loading}
             className="w-full bg-[#5c40c2] text-white font-semibold py-2 rounded-lg hover:bg-[#4a2fb0] transition-all"
